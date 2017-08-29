@@ -1,19 +1,13 @@
 name: gypsy-danger
-summary: <Fill in summary here>
-maintainer: Richard Harding <Richard.Harding@dingy>
+summary: Parse server logs and dump into mysql for reporting
+maintainer: Richard Harding <rick.harding@canonical.com>
 description: |
-  <Multi-line description here>
-tags:
-  # Replace "misc" with one or more whitelisted tags from this list:
-  # https://jujucharms.com/docs/stable/authors-charm-metadata
-  - misc
+  Parse Apache logs into the DB.
 subordinate: false
+series: [xenial]
 provides:
-  provides-relation:
-    interface: interface-name
+  grafana-source:
+    interface: "grafana-source"
 requires:
-  requires-relation:
-    interface: interface-name
-peers:
-  peer-relation:
-    interface: interface-name
+  db:
+    interface: mysql
