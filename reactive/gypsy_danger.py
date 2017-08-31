@@ -43,9 +43,10 @@ def setup_mysql(mysql):
     env.log(mysql.host())
     write_mysql_config(
         source_type='mysql',
-        url="{}:{}/{}".format(mysql.host(), mysql.port(), mysql.database()),
+        url="{}:{}".format(mysql.host(), mysql.port()),
         username=mysql.user(),
-        password=mysql.password()
+        password=mysql.password(),
+        database=mysql.database(),
     )
 
 
@@ -75,7 +76,8 @@ def setup_grafana(grafana):
             dbconfig['url'],
             'Gypsy Danger Data Source',
             username=dbconfig['username'],
-            password=dbconfig['password']
+            password=dbconfig['password'],
+            database=dbconfig['database']
             )
     else:
         env.log('No mysql config to use')
